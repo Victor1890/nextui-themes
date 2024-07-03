@@ -1,3 +1,5 @@
+'use client';
+
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import { Example01 } from './examples/example-01'
