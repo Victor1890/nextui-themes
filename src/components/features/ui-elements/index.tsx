@@ -2,7 +2,7 @@
 
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-import { Example01 } from './examples/example-01'
+import { Example01 } from './examples/example-01';
 
 export function UIElements() {
     return (
