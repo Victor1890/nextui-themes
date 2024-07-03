@@ -6,6 +6,7 @@ import {
 } from "@/components/ui"
 import { useState } from "react"
 import { PREVIEW_MODES } from "./constants"
+import { UIElements } from "../ui-elements"
 
 export function Preview() {
 
@@ -20,6 +21,7 @@ export function Preview() {
                         <ToggleButtonItem value={PREVIEW_MODES.minimalistPage}>Minimalist Page</ToggleButtonItem>
                     </ToggleButton>
                 </div>
+                {previewMode === PREVIEW_MODES.minimalistPage ? null : <UIElements />}
             </div>
         </section>
     )
