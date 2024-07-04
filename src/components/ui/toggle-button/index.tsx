@@ -1,7 +1,12 @@
-import { Button, cn } from '@nextui-org/react'
-import { useContext, useMemo, useState } from 'react';
+'use client'
+
+import { Button } from '@nextui-org/react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import { ContextValue, ItemProps, RootProps } from './toggle-button.interface';
-import { ToggleContext } from './toggle-button.context';
+
+const ToggleContext = createContext<Pick<ContextValue, "value">>({
+    value: "",
+});
 
 export function ToggleButton({ children, defaultValue, onChange }: RootProps) {
     const [value, setValue] = useState(defaultValue);
