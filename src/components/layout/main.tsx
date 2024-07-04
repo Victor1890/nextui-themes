@@ -12,7 +12,7 @@ export function MainLayout({ children }: Readonly<MainLayoutProps>) {
     return (
         <Fragment>
             <Header />
-            <main className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+            <main className="absolute w-full z-50">
                 {children}
             </main>
             <div
