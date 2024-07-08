@@ -16,6 +16,9 @@ export function HomeColors() {
                     <Button radius="full" className="w-8 h-8 bg-green-600" />
                 </ButtonGroup>
                 <PopoverChangeColor />
+                {/* <Button variant="flat" className="text-white border-gray-600">
+                    Copy code
+                </Button> */}
                 <Button variant="flat" className="text-white border-gray-600">
                     Copy code
                 </Button>

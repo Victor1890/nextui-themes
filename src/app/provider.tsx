@@ -5,18 +5,13 @@ import { ThemeProviderProps } from "next-themes/dist/types";
 
 interface ProviderProps {
     children: React.ReactNode;
-    themeProps?: ThemeProviderProps;
+    themeProps?: Omit<ThemeProviderProps, "children">;
 }
 
 export function Provider({ children, themeProps }: Readonly<ProviderProps>) {
     return (
         <NextUIProvider>
-            <NextThemesProvider
-                attribute="class"
-                forcedTheme="dark"
-                themes={['light', 'dark']}
-                {...themeProps}
-            >
+            <NextThemesProvider {...themeProps}>
                 <MainLayout>
                     {children}
                 </MainLayout>
