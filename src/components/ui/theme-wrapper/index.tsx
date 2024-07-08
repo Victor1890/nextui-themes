@@ -8,7 +8,7 @@ interface ThemeWrapperProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElem
 export function ThemeWrapper({ children, ...props }: ThemeWrapperProps) {
     return (
         <div {...props}>
-
+            {children}
         </div>
     )
 }

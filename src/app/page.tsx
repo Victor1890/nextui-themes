@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Fragment>
       <HomeColors />
-      <Preview />
+      {/* <Preview /> */}
     </Fragment>
   );
 }
