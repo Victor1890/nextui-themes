@@ -3,15 +3,11 @@ import { RefreshCcw } from "lucide-react";
 import { ThemeWrapper } from "../theme-wrapper";
 import { ColorsSectionPopover, ModeSectionPopover, RadiusSectionPopover, StyleSectionPopover } from "./sections";
 
-interface PopoverChangeColorProps {
-    btnText?: string
-}
-
-export function PopoverChangeColor({ btnText = "Customize" }: PopoverChangeColorProps) {
+export function PopoverChangeColor() {
     return (
         <Popover showArrow as="article">
             <PopoverTrigger>
-                <Button variant="solid">{btnText}</Button>
+                <Button variant="solid" className="border-gray-600">Customize</Button>
             </PopoverTrigger>
             <PopoverContent
                 className="z-40 w-[340px] rounded-[12px] p-6"
