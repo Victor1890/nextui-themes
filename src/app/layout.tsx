@@ -1,9 +1,7 @@
-import { Inter } from "next/font/google";
 import "@/styles/globals.css";
-import { Provider } from "./provider";
 import { cn } from "@nextui-org/react";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Provider } from "./provider";
+import { fontSans } from "@/config/fonts";
 
 export default function RootLayout({
   children,
@@ -11,9 +9,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "min-h-screen bg-black text-white")}>
-        <Provider>
+    <html lang="en" suppressHydrationWarning dir="ltr">
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.className)}>
+        <Provider
+          themeProps={{
+            attribute: "class",
+            defaultTheme: "dark",
+            themes: ['dark', 'light'],
+            enableSystem: true,
+            enableColorScheme: true,
+          }}
+        >
           {children}
         </Provider>
       </body>

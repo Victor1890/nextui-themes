@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from "@nextui-org/react";
 import { CSSProperties, DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 
