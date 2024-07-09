@@ -2,7 +2,7 @@
 
 import { Masonry, ResponsiveMasonry } from "@/components/ui/masonry"
 
-import { Example01 } from './examples/example-01';
+import { UIElementsExamples } from './examples';
 
 export function UIElements() {
     return (
@@ -11,8 +11,8 @@ export function UIElements() {
             columnsCountBreakPoints={{ 0: 1, 640: 2, 1400: 3 }}
         >
             <Masonry className="max-w-[1024px]" gutter="20px">
-                {Array.from({ length: 9 }).map((_, index) => (
-                    <Example01 key={index} />
+                {UIElementsExamples.map((Element, index) => (
+                    <Element key={index} />
                 ))}
             </Masonry>
         </ResponsiveMasonry>
