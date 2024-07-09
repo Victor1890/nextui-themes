@@ -21,7 +21,7 @@ export function PopoverChangeColor({ btnText = "Customize" }: PopoverChangeColor
                 >
                     <div className="flex items-start pt-4 md:pt-0">
                         <div className="space-y-1 pr-2">
-                            <div className="dark dark:text-white text-red-500 font-semibold leading-none tracking-tight text-large">
+                            <div className="font-semibold leading-none tracking-tight text-large">
                                 Customize
                             </div>
                             <div className="text-xs text-muted-foreground">
