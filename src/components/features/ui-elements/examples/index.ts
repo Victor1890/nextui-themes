@@ -1,5 +1,11 @@
 import { MusicPlayer } from "./music-player";
+import { RangeCalendar } from "./calendar";
+import { UserSelect } from "./user-select";
+import { FinancialPerformanceChart } from "./financial-performance-chart";
 
-import { Example01 } from "./example-01";
-
-export const UIElementsExamples = [MusicPlayer, Example01];
+export const UIElementsExamples = [
+    MusicPlayer,
+    UserSelect,
+    RangeCalendar,
+    FinancialPerformanceChart,
+];

@@ -44,6 +44,7 @@ function Masonry({
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
                     alignContent: 'stretch',
+                    flexWrap: 'wrap',
                     flex: 1,
                     width: 0, // Consider if this is necessary or should be adjusted
                     gap: gutter,

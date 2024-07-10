@@ -11,7 +11,7 @@ export function MusicPlayer() {
     return (
         <Card
             isBlurred
-            className="border-none bg-background/60 dark:bg-default-100/50 max-w-[610px]"
+            className="border-none bg-background/60 dark:bg-default-100/50 w-full max-w-[710px]"
             shadow="sm"
         >
             <CardBody>
