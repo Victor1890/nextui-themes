@@ -15,7 +15,7 @@ import {
 } from "@nextui-org/react"
 import { LineChartDumb } from "./line-chart"
 import { Calendar as CalendarIcon, TrendingUpIcon } from "lucide-react"
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { today, getLocalTimeZone } from "@internationalized/date";
 import { useDateFormatter } from "@react-aria/i18n";
 
@@ -26,7 +26,14 @@ export function FinancialPerformanceChart() {
         end: today(getLocalTimeZone()).subtract({ years: 4 }),
     });
 
-    const formatter = useDateFormatter({ dateStyle: "long" });
+    const formatter = useDateFormatter({ dateStyle: "short" });
+
+    const dateFormatter = useMemo(() => {
+        return formatter.formatRange(
+            new Date(value.start.toString()),
+            new Date(value.end.toString())
+        );
+    }, [formatter, value])
 
     return (
         <Card className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
@@ -44,10 +51,7 @@ export function FinancialPerformanceChart() {
                             startContent={<CalendarIcon className="h-4 w-4" />}
                             variant="flat"
                         >
-                            {formatter.formatRange(
-                                value.start.toDate(getLocalTimeZone()),
-                                value.end.toDate(getLocalTimeZone())
-                            )}
+                            {dateFormatter}
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent className="!p-0">

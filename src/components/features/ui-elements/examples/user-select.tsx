@@ -210,7 +210,7 @@ export function UserSelect() {
             label="Assigned to"
             placeholder="Select a user"
             labelPlacement="outside"
-            className="max-w-xs"
+            className="max-w-2xl"
         >
             {(user) => (
                 <SelectItem key={user.id} textValue={user.name}>
