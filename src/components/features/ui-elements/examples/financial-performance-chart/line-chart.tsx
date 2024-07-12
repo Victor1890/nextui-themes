@@ -8,11 +8,10 @@ export function LineChartDumb(props: HTMLAttributes<HTMLDivElement>) {
   return (
     <div {...props}>
       <ChartContainer
-
         config={{
           desktop: {
             label: "Desktop",
-            color: "hsl(var(--chart-1))",
+            color: "hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-bg-opacity)))",
           },
         }}
       >

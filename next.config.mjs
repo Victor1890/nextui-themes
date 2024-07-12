@@ -4,6 +4,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: "nextui.org",
+            },
+            {
+                hostname: "avatars.githubusercontent.com",
             }
         ]
     }

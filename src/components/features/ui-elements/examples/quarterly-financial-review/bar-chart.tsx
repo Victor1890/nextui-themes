@@ -9,7 +9,7 @@ export function BarChartDumb(props: HTMLAttributes<HTMLDivElement>) {
                 config={{
                     desktop: {
                         label: "Desktop",
-                        color: "hsl(var(--chart-1))",
+                        color: "hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-bg-opacity)))",
                     },
                 }}
                 className="min-h-[300px] w-full"
