@@ -32,7 +32,7 @@ export function QuarterlyFinancialReviewChart() {
         <Card className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
             <CardHeader className="items-start flex-col space-y-1.5 p-6">
                 <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Quarterly Financial Review</h3>
-                <p className="text-sm">A graph showing the company's quarterly revenue and profit trends over the past 5 years</p>
+                <p className="text-sm">A graph showing the companies quarterly revenue and profit trends over the past 5 years</p>
             </CardHeader>
             <CardBody>
                 <BarChartDumb className="aspect-[16/9]" />
@@ -56,7 +56,6 @@ export function QuarterlyFinancialReviewChart() {
                             onChange={setValue}
                             showHelper={false}
                             visibleMonths={2}
-
                         />
                     </PopoverContent>
                 </Popover>
