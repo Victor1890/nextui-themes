@@ -1,19 +1,19 @@
-import { MusicPlayer } from "./music-player";
-import { RangeCalendar } from "./calendar";
-import { UserSelect } from "./user-select";
+import { Chat } from "./chat";
 import { FinancialPerformanceChart } from "./financial-performance-chart";
-import { QuarterlyFinancialReviewChart } from "./quarterly-financial-review";
+import { MusicPlayer } from "./music-player";
 import { NotificationSettings } from "./notification-settings";
-import { Chat } from "./chat"
+import DataTableDemo from "./payment-management/example";
+import { QuarterlyFinancialReviewChart } from "./quarterly-financial-review";
 import { ShareDocument } from "./share-document";
+import { UserSelect } from "./user-select";
 
 export const UIElementsExamples = [
-    MusicPlayer,
-    UserSelect,
-    QuarterlyFinancialReviewChart,
-    RangeCalendar,
-    FinancialPerformanceChart,
-    Chat,
-    NotificationSettings,
-    ShareDocument
+    // MusicPlayer,
+    // UserSelect,
+    // QuarterlyFinancialReviewChart,
+    // FinancialPerformanceChart,
+    // Chat,
+    // NotificationSettings,
+    // ShareDocument,
+    DataTableDemo
 ];
