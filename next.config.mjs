@@ -7,7 +7,10 @@ const nextConfig = {
             },
             {
                 hostname: "avatars.githubusercontent.com",
-            }
+            },
+            {
+                hostname: "i.pravatar.cc",
+            },
         ]
     }
 };

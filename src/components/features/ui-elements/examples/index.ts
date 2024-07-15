@@ -2,7 +2,7 @@ import { Chat } from "./chat";
 import { FinancialPerformanceChart } from "./financial-performance-chart";
 import { MusicPlayer } from "./music-player";
 import { NotificationSettings } from "./notification-settings";
-import DataTableDemo from "./payment-management/example";
+import DataTableDemo from "./payment-management/example-2";
 import { QuarterlyFinancialReviewChart } from "./quarterly-financial-review";
 import { ShareDocument } from "./share-document";
 import { UserSelect } from "./user-select";
