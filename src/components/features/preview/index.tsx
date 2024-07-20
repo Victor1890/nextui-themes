@@ -4,6 +4,7 @@ import { ToggleButton, ToggleButtonItem } from "@/components/ui";
 import { useState } from "react";
 import { PREVIEW_MODES } from "./constants";
 import { UIElements } from "../ui-elements";
+import { LandingPage } from "../landing-page";
 
 export function Preview() {
   const [previewMode, setPreviewMode] = useState<string>(
@@ -22,7 +23,11 @@ export function Preview() {
           </ToggleButtonItem>
         </ToggleButton>
       </div>
-      {previewMode === PREVIEW_MODES.minimalistPage ? null : <UIElements />}
+      {previewMode === PREVIEW_MODES.minimalistPage ? (
+        <LandingPage />
+      ) : (
+        <UIElements />
+      )}
     </section>
   );
 }
