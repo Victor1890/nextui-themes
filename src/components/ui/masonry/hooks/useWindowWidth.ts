@@ -6,7 +6,7 @@ import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 export const useWindowWidth = () => {
   const hasMounted = useHasMounted();
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(typeof window === "undefined" ? 0 : window.innerWidth);
 
   const handleResize = useCallback(() => {
     if (!hasMounted) return;
@@ -14,7 +14,7 @@ export const useWindowWidth = () => {
   }, [hasMounted]);
 
   useIsomorphicLayoutEffect(() => {
-    if (!hasMounted || typeof window === "undefined")
+    if (!hasMounted)
       return console.log("useWindowWidth: window is undefined");
 
     window.addEventListener("resize", handleResize);

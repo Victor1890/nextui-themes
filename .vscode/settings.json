@@ -2,5 +2,9 @@
     "cSpell.words": [
         "lucide",
         "nextui"
-    ]
+    ],
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

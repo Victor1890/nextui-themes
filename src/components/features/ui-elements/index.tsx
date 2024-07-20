@@ -1,20 +1,25 @@
-'use client';
+"use client";
 
-import { Masonry, ResponsiveMasonry } from "@/components/ui/masonry"
+import { Masonry, ResponsiveMasonry } from "@/components/ui/masonry";
 
-import { Example01 } from './examples/example-01';
+import { UIElementsExamples } from "./examples";
 
 export function UIElements() {
-    return (
-        <ResponsiveMasonry
-            className="h-auto w-full m-auto flex items-center justify-center"
-            columnsCountBreakPoints={{ 0: 1, 640: 2, 1400: 3 }}
-        >
-            <Masonry className="max-w-[1024px]" gutter="20px">
-                {Array.from({ length: 9 }).map((_, index) => (
-                    <Example01 key={index} />
-                ))}
-            </Masonry>
-        </ResponsiveMasonry>
-    )
+  return (
+    <ResponsiveMasonry
+      className="h-auto w-full m-auto flex items-center justify-center"
+      columnsCountBreakPoints={{
+        0: 1,
+        640: 2,
+        1400: 3,
+        1920: 4,
+      }}
+    >
+      <Masonry className="max-w-[1280px]" gutter="20px">
+        {UIElementsExamples.map((Element, index) => (
+          <Element key={index} />
+        ))}
+      </Masonry>
+    </ResponsiveMasonry>
+  );
 }
