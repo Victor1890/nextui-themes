@@ -12,7 +12,6 @@
     "@internationalized/date": "3.5.4",
     "@nextui-org/react": "^2.4.2",
     "@react-aria/i18n": "3.11.1",
-    "@tanstack/react-table": "8.19.2",
     "framer-motion": "^11.2.12",
     "lucide-react": "0.400.0",
     "next": "14.2.4",
