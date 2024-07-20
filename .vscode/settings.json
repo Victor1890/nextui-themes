@@ -1,10 +1,14 @@
 {
     "cSpell.words": [
+        "grotesk",
+        "Grotesk",
+        "latin",
         "lucide",
-        "nextui"
+        "Neue",
+        "nextui",
+        "Roboto",
+        "Segoe"
     ],
-    "[typescriptreact]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
