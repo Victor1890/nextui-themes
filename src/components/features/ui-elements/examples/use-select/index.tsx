@@ -4,7 +4,7 @@ import { ThemeWrapper } from "@/components/ui/theme-wrapper";
 
 export function UserSelect() {
   return (
-    <ThemeWrapper defaultTheme="dark">
+    <ThemeWrapper>
       <Select
         items={USERS}
         label="Assigned to"

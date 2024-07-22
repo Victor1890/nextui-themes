@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export function ModeSectionPopover() {
-  const { theme: mode, setTheme: setMode, themes } = useTheme();
+  const { theme: mode, setTheme: setMode } = useTheme();
   const mounted = true;
 
   return (
@@ -33,18 +33,6 @@ export function ModeSectionPopover() {
             >
               {/* <MoonIcon className="mr-1 -translate-x-1" /> */}
               Dark
-            </Button>
-            <Button
-              variant={"flat"}
-              size="sm"
-              startContent={<Moon />}
-              onClick={() => setMode("custom-theme")}
-              className={cn(
-                mode === "custom-theme" && "border-2 border-primary"
-              )}
-            >
-              {/* <MoonIcon className="mr-1 -translate-x-1" /> */}
-              Custom Theme
             </Button>
           </>
         ) : (
