@@ -10,12 +10,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning dir="ltr">
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.className)}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.className
+        )}
+      >
         <Provider
           themeProps={{
             attribute: "class",
             defaultTheme: "dark",
-            themes: ['dark', 'light'],
+            themes: ["dark", "light", "custom-theme"],
             enableSystem: true,
             enableColorScheme: true,
           }}
