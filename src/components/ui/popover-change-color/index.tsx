@@ -10,7 +10,7 @@ import {
   ColorsSectionPopover,
   ModeSectionPopover,
   RadiusSectionPopover,
-  StyleSectionPopover,
+  // StyleSectionPopover,
 } from "./sections";
 
 export function PopoverChangeColor() {
@@ -41,7 +41,7 @@ export function PopoverChangeColor() {
             </Button>
           </div>
           <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
-            <StyleSectionPopover />
+            {/* <StyleSectionPopover /> */}
             <ColorsSectionPopover />
             <RadiusSectionPopover />
             <ModeSectionPopover />

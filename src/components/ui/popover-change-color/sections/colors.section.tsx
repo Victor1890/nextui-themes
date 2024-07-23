@@ -1,19 +1,10 @@
+import { THEME } from "@/constants";
 import { useThemeStore } from "@/stores/theme.store";
 import { Button, cn, Skeleton } from "@nextui-org/react";
 import { Check } from "lucide-react";
 
-// const config = {
-//   theme: "default",
-//   name: "default",
-//   label: "Default",
-//   activeColor: {
-//     light: 200,
-//     dark: 200,
-//   },
-// };
-
 export function ColorsSectionPopover() {
-  const { themes, theme: defaultTheme } = useThemeStore();
+  const { theme } = useThemeStore();
 
   const mounted = true;
 
@@ -21,14 +12,14 @@ export function ColorsSectionPopover() {
     <div className="space-y-1.5">
       <span className="text-xs">Color</span>
       <div className="grid grid-cols-3 gap-2">
-        {themes.map((theme) => {
-          const isActive = defaultTheme === theme;
+        {THEME.map(({ label, name }) => {
+          const isActive = name === theme;
 
           return mounted ? (
             <Button
               variant={"flat"}
               size="sm"
-              key={theme}
+              key={name}
               startContent={
                 <span
                   className={cn(
@@ -49,10 +40,7 @@ export function ColorsSectionPopover() {
                 isActive && "border-2 border-primary"
               )}
             >
-              {theme
-                .split("-")
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" ")}
+              {label}
             </Button>
           ) : (
             <Skeleton className="h-8 w-full rounded-lg" key={theme} />
