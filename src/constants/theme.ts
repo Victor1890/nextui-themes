@@ -2,6 +2,10 @@ export const THEME = [
   {
     name: "blue-theme",
     label: "Blue",
+    activeColor: {
+      light: "210 80% 40%", // Adjust based on your blue palette
+      dark: "210 70% 60%", // Adjust based on your blue palette
+    },
     schemas: {
       light: {
         background: "#e0e7ff",
@@ -44,6 +48,10 @@ export const THEME = [
   {
     name: "green-theme",
     label: "Green",
+    activeColor: {
+      light: "120 80% 40%", // Adjust based on your green palette
+      dark: "120 70% 60%", // Adjust based on your green palette
+    },
     schemas: {
       light: {
         background: "#e5f5e0",
@@ -86,6 +94,10 @@ export const THEME = [
   {
     name: "pink-theme",
     label: "Pink",
+    activeColor: {
+      light: "330 80% 60%", // Adjust based on your pink palette
+      dark: "330 70% 70%", // Adjust based on your pink palette
+    },
     schemas: {
       light: {
         background: "#ffe0f0",
@@ -128,6 +140,10 @@ export const THEME = [
   {
     name: "red-theme",
     label: "Red",
+    activeColor: {
+      light: "0 72.2% 50.6%", // Adjust based on your red palette
+      dark: "0 72.2% 50.6%", // Adjust based on your red palette
+    },
     schemas: {
       light: {
         background: "#f8e0e0",
@@ -170,6 +186,10 @@ export const THEME = [
   {
     name: "orange-theme",
     label: "Orange",
+    activeColor: {
+      light: "30 80% 60%", // Adjust based on your orange palette
+      dark: "30 70% 70%", // Adjust based on your orange palette
+    },
     schemas: {
       light: {
         background: "#fef5e7",
