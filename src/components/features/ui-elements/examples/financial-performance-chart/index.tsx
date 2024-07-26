@@ -6,6 +6,7 @@ import { useDateFormatter } from "@react-aria/i18n";
 import { Calendar as CalendarIcon, TrendingUpIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import { LineChartDumb } from "./line-chart";
+import { ThemeWrapper } from "@/components/ui/theme-wrapper";
 
 export function FinancialPerformanceChart() {
   const [value, setValue] = useState<RangeValue<DateValue>>({
@@ -18,6 +19,8 @@ export function FinancialPerformanceChart() {
   const dateFormatter = useMemo(() => {
     return formatter.formatRange(new Date(value.start.toString()), new Date(value.end.toString()));
   }, [formatter, value]);
+
+  console.log("dateFormatter: ", dateFormatter);
 
   return (
     <Card className="border-none w-full max-w-2xl bg-background dark:bg-primary-100">

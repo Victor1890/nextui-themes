@@ -21,19 +21,18 @@ export function ThemeWrapper({ className, children }: ThemeWrapperProps) {
   useEffect(() => {
     const unsubscribe = useThemeStore.subscribe(({ theme }) => {
       const themeData = THEME.find((t) => t.name === theme);
-      console.log("themeData: ", themeData);
       if (!themeData) return;
       setTheme(themeData);
     });
 
-    return () => unsubscribe(); // Cleanup subscription on unmount
-  }, []);
+    return () => unsubscribe();
+  }, [theme, mode]);
 
-  console.log("theme: ", theme)
+  console.log("theme: ", theme);
 
   return (
     <ThemeContext.Provider value={{ theme }}>
-      <div data-layer-label="theme-wrapper" className={className} style={generateCssVariables(theme?.schemas[mode === "dark" ? "dark" : "light"])}>
+      <div data-layer-label="theme-wrapper" className={className} style={generateCssVariables(theme.schemas[mode === "dark" ? "dark" : "light"])}>
         {children}
       </div>
     </ThemeContext.Provider>

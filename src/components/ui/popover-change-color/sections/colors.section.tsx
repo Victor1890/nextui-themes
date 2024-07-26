@@ -29,10 +29,7 @@ export function ColorsSectionPopover() {
                 <span className={cn("flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary")}>{isActive && <Check className="h-4 w-4 text-white" />}</span>
               }
               onClick={() => setConfig({ theme: name })}
-              className={cn(
-                "justify-start"
-                // isActive && "border-2 border-primary"
-              )}
+              className={cn("justify-start")}
             >
               {label}
             </Button>
