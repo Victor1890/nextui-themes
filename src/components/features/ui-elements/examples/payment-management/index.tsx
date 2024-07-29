@@ -8,7 +8,6 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Input,
-  Pagination,
   Table,
   TableBody,
   TableCell,
@@ -27,8 +26,6 @@ export default function DataTableDemo() {
   const {
     selectedKeys,
     filteredItems,
-    page,
-    setPage,
     pages,
     onPreviousPage,
     onNextPage,
@@ -54,11 +51,7 @@ export default function DataTableDemo() {
     switch (columnKey) {
       case "name":
         return (
-          <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            description={user.email}
-            name={cellValue}
-          >
+          <User avatarProps={{ radius: "lg", src: user.avatar, alt: user.name }} description={user.email} name={cellValue}>
             {user.email}
           </User>
         );
@@ -66,19 +59,12 @@ export default function DataTableDemo() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
+            <p className="text-bold text-tiny capitalize text-default-400">{user.team}</p>
           </div>
         );
       case "status":
         return (
-          <Chip
-            className="capitalize"
-            color={STATUS_COLOR_MAP[user.status]}
-            size="sm"
-            variant="flat"
-          >
+          <Chip className="capitalize" color={STATUS_COLOR_MAP[user.status]} size="sm" variant="flat">
             {cellValue}
           </Chip>
         );
@@ -109,7 +95,7 @@ export default function DataTableDemo() {
       <div className="flex flex-col gap-4">
         <div className="flex justify-between gap-3 items-end">
           <Input
-            variant="flat"
+            variant="bordered"
             isClearable
             className="w-full sm:max-w-[44%]"
             placeholder="Search by name..."
@@ -121,10 +107,7 @@ export default function DataTableDemo() {
           <div className="flex gap-3">
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
-                <Button
-                  endContent={<ArrowDown className="text-small" />}
-                  variant="flat"
-                >
+                <Button endContent={<ArrowDown className="text-small" />} color="primary" variant="solid">
                   Status
                 </Button>
               </DropdownTrigger>
@@ -146,10 +129,7 @@ export default function DataTableDemo() {
             </Dropdown>
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
-                <Button
-                  endContent={<ArrowDown className="text-small" />}
-                  variant="flat"
-                >
+                <Button endContent={<ArrowDown className="text-small" />} color="primary" variant="solid">
                   Columns
                 </Button>
               </DropdownTrigger>
@@ -173,72 +153,32 @@ export default function DataTableDemo() {
         </div>
       </div>
     );
-  }, [
-    filterValue,
-    onSearchChange,
-    statusFilter,
-    setStatusFilter,
-    statusOptions,
-    visibleColumns,
-    setVisibleColumns,
-    columns,
-    onClear,
-  ]);
+  }, [filterValue, onSearchChange, statusFilter, setStatusFilter, statusOptions, visibleColumns, setVisibleColumns, columns, onClear]);
 
   const bottomContent = useMemo(() => {
     return (
       <div className="py-2 px-2 flex justify-between items-center">
         <span className="w-[30%] text-small text-default-400 font-bold">
-          {selectedKeys === "all"
-            ? "All items selected"
-            : `${selectedKeys.size} of ${filteredItems.length} selected`}
+          {selectedKeys === "all" ? "All items selected" : `${selectedKeys.size} of ${filteredItems.length} selected`}
         </span>
-        <Pagination
-          isCompact
-          showControls
-          showShadow
-          color="primary"
-          page={page}
-          total={pages}
-          onChange={setPage}
-        />
         <div className="hidden sm:flex w-[30%] justify-end gap-2">
-          <Button
-            isDisabled={pages === 1}
-            size="sm"
-            variant="flat"
-            onPress={onPreviousPage}
-          >
+          <Button isDisabled={pages === 1} size="sm" variant="solid" color="primary" onPress={onPreviousPage}>
             Previous
           </Button>
-          <Button
-            isDisabled={pages === 1}
-            size="sm"
-            variant="flat"
-            onPress={onNextPage}
-          >
+          <Button isDisabled={pages === 1} size="sm" variant="solid" color="primary" onPress={onNextPage}>
             Next
           </Button>
         </div>
       </div>
     );
-  }, [
-    selectedKeys,
-    filteredItems.length,
-    page,
-    pages,
-    setPage,
-    onPreviousPage,
-    onNextPage,
-  ]);
+  }, [selectedKeys, filteredItems.length, pages, onPreviousPage, onNextPage]);
 
   return (
-    <Card className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
+    <Card isBlurred className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
       <CardBody>
         <Table
           classNames={{
-            wrapper:
-              "border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50 shadow-none",
+            wrapper: "border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50 shadow-none",
           }}
           aria-label="Example table with custom cells, pagination and sorting"
           isHeaderSticky
@@ -254,23 +194,13 @@ export default function DataTableDemo() {
         >
           <TableHeader columns={headerColumns}>
             {(column) => (
-              <TableColumn
-                key={column.uid}
-                align={column.uid === "actions" ? "center" : "start"}
-                allowsSorting={column.sortable}
-              >
+              <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"} allowsSorting={column.sortable}>
                 {column.name}
               </TableColumn>
             )}
           </TableHeader>
           <TableBody emptyContent={"No users found"} items={sortedItems}>
-            {(item) => (
-              <TableRow key={item.id}>
-                {(columnKey) => (
-                  <TableCell>{renderCell(item, columnKey)}</TableCell>
-                )}
-              </TableRow>
-            )}
+            {(item) => <TableRow key={item.id}>{(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}</TableRow>}
           </TableBody>
         </Table>
       </CardBody>

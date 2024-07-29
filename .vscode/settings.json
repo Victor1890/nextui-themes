@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Blurryface",
         "grotesk",
         "Grotesk",
         "latin",
@@ -8,6 +9,7 @@
         "nextui",
         "Roboto",
         "Segoe",
+        "webp",
         "zustand"
     ],
     "editor.formatOnSave": true,

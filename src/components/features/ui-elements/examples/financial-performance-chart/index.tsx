@@ -25,8 +25,6 @@ export function FinancialPerformanceChart() {
     return formatter.formatRange(new Date(value.start.toString()), new Date(value.end.toString()));
   }, [formatter, value]);
 
-  console.log("dateFormatter: ", dateFormatter);
-
   useEffect(() => {
     const unsubscribe = useThemeStore.subscribe(({ theme }) => {
       setTheme(theme);
@@ -36,7 +34,7 @@ export function FinancialPerformanceChart() {
   }, [theme, themeDefault, mode]);
 
   return (
-    <Card className="border-none w-full max-w-2xl">
+    <Card isBlurred className="border-none w-full max-w-2xl">
       <CardHeader className="items-start flex-col space-y-1.5 p-6">
         <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Financial Performance</h3>
         <p className="text-sm">Revenue and cost comparison</p>

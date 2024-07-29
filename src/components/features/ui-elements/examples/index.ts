@@ -10,10 +10,10 @@ import { UserSelect } from "./use-select";
 export const UIElementsExamples = [
   MusicPlayer,
   UserSelect,
-  // QuarterlyFinancialReviewChart,
+  QuarterlyFinancialReviewChart,
   FinancialPerformanceChart,
-  // Chat,
-  // NotificationSettings,
-  // ShareDocument,
-  // DataTableDemo,
+  Chat,
+  NotificationSettings,
+  ShareDocument,
+  DataTableDemo,
 ];

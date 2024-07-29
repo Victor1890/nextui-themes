@@ -39,6 +39,13 @@ export function Chat() {
   ]);
   const inputLength = useMemo(() => input.length, [input]);
 
+  const handleClick = useCallback(() => {
+    if (!inputLength) return;
+
+    setMessages((prev) => [...prev, { sender: "me", content: input }]);
+    setInput("");
+  }, [inputLength, input]);
+
   const handleSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement | HTMLDivElement>) => {
       event.preventDefault();
@@ -51,8 +58,7 @@ export function Chat() {
   );
 
   return (
-    <Card className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
-      {/* <Card> */}
+    <Card isBlurred className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
       <CardHeader className="space-y-1.5 p-6 flex flex-row items-center justify-between">
         <User
           name="Junior Garcia"
@@ -61,7 +67,7 @@ export function Chat() {
             src: "https://avatars.githubusercontent.com/u/30373425?v=4",
           }}
         />
-        <Button isIconOnly radius="full" variant="ghost">
+        <Button isIconOnly color="primary" radius="full" variant="ghost">
           <Plus className="size-6" />
         </Button>
       </CardHeader>
@@ -82,7 +88,7 @@ export function Chat() {
       </CardBody>
       <CardFooter as={"form"} className="p-6 gap-3" onSubmit={handleSubmit}>
         <Input variant="bordered" placeholder="Type a message..." autoComplete="off" value={input} onChange={(e) => setInput(e.target.value)} />
-        <Button variant="flat" isIconOnly color="primary" isDisabled={!inputLength}>
+        <Button variant="flat" isIconOnly color="primary" isDisabled={!inputLength} onClick={handleClick}>
           <SendHorizontal className="size-5" />
         </Button>
       </CardFooter>

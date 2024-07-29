@@ -3,8 +3,8 @@ export const THEME = [
     name: "sunset-theme",
     label: "Sunset",
     activeColor: {
-      light: "40 100% 70%", // Adjusted HSL for a similar bright yellow-orange
-      dark: "40 80% 50%", // Adjusted HSL for a similar vibrant yellow-orange
+      light: "40 100% 70%",
+      dark: "40 80% 50%",
     },
     schemas: {
       light: {
@@ -12,7 +12,7 @@ export const THEME = [
         foreground: "20 14.3% 4.1%",
         default: "24.6 95% 53.1%",
         primary: "24.6 95% 53.1%",
-        "default-foreground": "60 9.1% 97.8%",
+        "default-foreground": "0, 0%, 27.1%",
         "primary-foreground": "60 9.1% 97.8%",
         secondary: "60 4.8% 95.9%",
         "secondary-foreground": "24 9.8% 10%",

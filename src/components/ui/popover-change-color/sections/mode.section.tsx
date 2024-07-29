@@ -4,32 +4,29 @@ import { useThemeStore } from "@/stores/theme.store";
 import { Button, cn, Skeleton } from "@nextui-org/react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Fragment } from "react";
 
 export function ModeSectionPopover() {
   const { theme: mode, setTheme: setMode } = useTheme();
   useThemeStore.setState({ mode: mode === "dark" ? "dark" : "light" });
   const mounted = true;
 
+  const themes = ["light", "dark", "blue-theme"];
+
   return (
     <div className="space-y-1.5">
       <span className="text-xs">Mode</span>
       <div className="grid grid-cols-3 gap-2">
-        {mounted ? (
-          <>
-            <Button variant={"flat"} size="sm" startContent={<Sun />} onClick={() => setMode("light")} className={cn(mode === "light" && "border-2 border-primary")}>
-              Light
+        {themes.map((theme) => (
+          <Fragment key={theme}>
+            <Button variant={"flat"} size="sm" startContent={<Sun />} onClick={() => setMode(theme)} className={cn(mode === theme && "border-2 border-primary")}>
+              {theme}
             </Button>
-            <Button variant={"flat"} size="sm" startContent={<Moon />} onClick={() => setMode("dark")} className={cn(mode === "dark" && "border-2 border-primary")}>
-              {/* <MoonIcon className="mr-1 -translate-x-1" /> */}
+            {/* <Button variant={"flat"} size="sm" startContent={<Moon />} onClick={() => setMode(theme)} className={cn(mode === theme && "border-2 border-primary")}>
               Dark
-            </Button>
-          </>
-        ) : (
-          <>
-            <Skeleton className="h-8 w-full rounded-lg" />
-            <Skeleton className="h-8 w-full rounded-lg" />
-          </>
-        )}
+            </Button> */}
+          </Fragment>
+        ))}
       </div>
     </div>
   );
