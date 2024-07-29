@@ -1,13 +1,13 @@
-import { IThemeType } from "@/constants";
+import { IThemeType, THEME } from "@/constants";
 import { create } from "zustand";
 
 interface IThemeConfig {
-  theme: IThemeType["name"] | "light" | "dark";
+  theme: IThemeType;
   radius: string;
 }
 
 interface IThemeStore {
-  theme: IThemeType["name"];
+  theme: IThemeType;
   mode: "dark" | "light";
   radius: string;
   setConfig: (data: Partial<IThemeConfig>) => void;
@@ -15,7 +15,7 @@ interface IThemeStore {
 
 export const useThemeStore = create<IThemeStore>((set) => ({
   radius: "",
-  theme: "",
+  theme: THEME[0],
   mode: "light",
   setConfig: (data: Partial<IThemeConfig>) => set({ ...data }),
 }));

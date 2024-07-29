@@ -1,40 +1,16 @@
 "use client";
 
-import { IThemeType, THEME } from "@/constants";
-import { useThemeStore } from "@/stores/theme.store";
+import { IThemeType } from "@/constants";
 import { generateCssVariables } from "@/utils/color.util";
-import { useTheme } from "next-themes";
-import { ComponentProps, createContext, useEffect, useState } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 interface ThemeWrapperProps extends ComponentProps<"div"> {
-  theme?: IThemeType;
+  theme: IThemeType;
+  mode: "dark" | "light";
 }
 
-const ThemeContext = createContext<Omit<ThemeWrapperProps, "children">>({
-  // theme: THEME[0],
+export const ThemeWrapper = forwardRef<HTMLDivElement, ThemeWrapperProps>(({ mode, theme, className, ...props }, ref) => {
+  return <div ref={ref} data-layer-label="theme-wrapper" className={className} style={generateCssVariables(theme.schemas[mode === "dark" ? "dark" : "light"])} {...props} />;
 });
 
-export function ThemeWrapper({ className, children }: ThemeWrapperProps) {
-  const { theme: mode } = useTheme();
-  const [theme, setTheme] = useState<IThemeType>(THEME[0]);
-
-  useEffect(() => {
-    const unsubscribe = useThemeStore.subscribe(({ theme }) => {
-      const themeData = THEME.find((t) => t.name === theme);
-      if (!themeData) return;
-      setTheme(themeData);
-    });
-
-    return () => unsubscribe();
-  }, [theme, mode]);
-
-  console.log("theme: ", theme);
-
-  return (
-    <ThemeContext.Provider value={{ theme }}>
-      <div data-layer-label="theme-wrapper" className={className} style={generateCssVariables(theme.schemas[mode === "dark" ? "dark" : "light"])}>
-        {children}
-      </div>
-    </ThemeContext.Provider>
-  );
-}
+ThemeWrapper.displayName = "ThemeWrapper";

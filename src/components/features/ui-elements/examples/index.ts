@@ -8,8 +8,8 @@ import { ShareDocument } from "./share-document";
 import { UserSelect } from "./use-select";
 
 export const UIElementsExamples = [
-  // MusicPlayer,
-  // UserSelect,
+  MusicPlayer,
+  UserSelect,
   // QuarterlyFinancialReviewChart,
   FinancialPerformanceChart,
   // Chat,
