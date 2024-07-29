@@ -17,7 +17,7 @@ export function ColorsSectionPopover() {
 
           return mounted ? (
             <Button
-              variant={"flat"}
+              variant={isActive ? "bordered" : "flat"}
               size="sm"
               key={theme.name}
               style={
@@ -29,7 +29,7 @@ export function ColorsSectionPopover() {
                 <span className={cn("flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary")}>{isActive && <Check className="h-4 w-4 text-white" />}</span>
               }
               onClick={() => setConfig({ theme })}
-              className={cn("justify-start")}
+              className={cn("justify-start capitalize w-full", isActive && "border-2 border-primary")}
             >
               {theme.label}
             </Button>
