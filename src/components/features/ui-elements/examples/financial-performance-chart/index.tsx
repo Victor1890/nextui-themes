@@ -34,7 +34,7 @@ export function FinancialPerformanceChart() {
   }, [theme, themeDefault, mode]);
 
   return (
-    <Card isBlurred className="border-none w-full max-w-2xl">
+    <Card isBlurred className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
       <CardHeader className="items-start flex-col space-y-1.5 p-6">
         <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Financial Performance</h3>
         <p className="text-sm">Revenue and cost comparison</p>

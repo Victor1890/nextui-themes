@@ -5,7 +5,7 @@ import { USERS } from "./data";
 
 export function UserSelect() {
   return (
-    <Card isBlurred>
+    <Card isBlurred className="border-none w-full max-w-2xl">
       <CardBody>
         <Select items={USERS} label="Assigned to" placeholder="Select a user" labelPlacement="outside" className="max-w-2xl">
           {(user) => (

@@ -8,7 +8,7 @@ export function MusicPlayer() {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Card isBlurred className="border-none w-full max-w-[710px]" shadow="sm">
+    <Card isBlurred className="border-none w-full max-w-[710px] bg-background/60 dark:bg-default-100/50">
       <CardBody>
         <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
           <div className="relative col-span-6 md:col-span-4">
