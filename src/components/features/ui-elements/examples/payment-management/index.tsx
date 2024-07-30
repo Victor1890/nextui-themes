@@ -51,7 +51,15 @@ export default function DataTableDemo() {
     switch (columnKey) {
       case "name":
         return (
-          <User avatarProps={{ radius: "lg", src: user.avatar, alt: user.name }} description={user.email} name={cellValue}>
+          <User
+            classNames={{
+              description: "text-foreground",
+              name: "text-foreground",
+            }}
+            avatarProps={{ radius: "lg", src: user.avatar, alt: user.name }}
+            description={user.email}
+            name={cellValue}
+          >
             {user.email}
           </User>
         );
