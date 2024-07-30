@@ -41,7 +41,7 @@ const NOTIFICATION_SETTING_DATA_DUMMIES = [
 
 export function NotificationSettings() {
   return (
-    <Card isBlurred className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
+    <Card className="border-none w-full max-w-2xl bg-background">
       <CardHeader className="items-start flex-col space-y-1.5 p-6">
         <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Notification Settings</h3>
         <p className="text-sm">Customize how you receive notifications</p>

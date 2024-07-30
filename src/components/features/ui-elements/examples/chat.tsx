@@ -58,7 +58,7 @@ export function Chat() {
   );
 
   return (
-    <Card isBlurred className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
+    <Card className="border-none w-full max-w-2xl bg-background">
       <CardHeader className="space-y-1.5 p-6 flex flex-row items-center justify-between">
         <User
           name="Junior Garcia"

@@ -1,14 +1,14 @@
 "use client";
 
-import { Card, CardHeader, CardBody, CardFooter, Button, Popover, PopoverTrigger, PopoverContent, RangeCalendar, type DateValue, type RangeValue } from "@nextui-org/react";
-import { BarChartDumb } from "./bar-chart";
-import { Calendar as CalendarIcon, TrendingUpIcon } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import { today, getLocalTimeZone } from "@internationalized/date";
-import { useDateFormatter } from "@react-aria/i18n";
-import { generateCssVariables } from "@/utils/color.util";
-import { useThemeStore } from "@/stores/theme.store";
 import { IThemeType } from "@/constants";
+import { useThemeStore } from "@/stores/theme.store";
+import { generateCssVariables } from "@/utils/color.util";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { Button, Card, CardBody, CardFooter, CardHeader, Popover, PopoverContent, PopoverTrigger, RangeCalendar, type DateValue, type RangeValue } from "@nextui-org/react";
+import { useDateFormatter } from "@react-aria/i18n";
+import { Calendar as CalendarIcon, TrendingUpIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { BarChartDumb } from "./bar-chart";
 
 export function QuarterlyFinancialReviewChart() {
   const { mode, theme: themeDefault } = useThemeStore();
@@ -30,7 +30,7 @@ export function QuarterlyFinancialReviewChart() {
   }, [theme, themeDefault, mode]);
 
   return (
-    <Card isBlurred className="border-none w-full max-w-2xl bg-background/60 dark:bg-default-100/50">
+    <Card className="border-none w-full max-w-2xl bg-background">
       <CardHeader className="items-start flex-col space-y-1.5 p-6">
         <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Quarterly Financial Review</h3>
         <p className="text-sm">A graph showing the companies quarterly revenue and profit trends over the past 5 years</p>
