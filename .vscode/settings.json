@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Blurryface",
         "grotesk",
         "Grotesk",
         "latin",
@@ -7,7 +8,9 @@
         "Neue",
         "nextui",
         "Roboto",
-        "Segoe"
+        "Segoe",
+        "webp",
+        "zustand"
     ],
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"

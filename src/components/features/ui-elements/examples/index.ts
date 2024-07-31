@@ -5,7 +5,7 @@ import { NotificationSettings } from "./notification-settings";
 import DataTableDemo from "./payment-management";
 import { QuarterlyFinancialReviewChart } from "./quarterly-financial-review";
 import { ShareDocument } from "./share-document";
-import { UserSelect } from "./user-select";
+import { UserSelect } from "./use-select";
 
 export const UIElementsExamples = [
   MusicPlayer,
