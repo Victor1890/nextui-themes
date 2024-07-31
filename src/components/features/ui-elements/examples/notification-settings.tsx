@@ -54,7 +54,7 @@ export function NotificationSettings() {
         </div>
       </CardBody>
       <CardFooter className="flex items-center justify-center p-4 gap-2">
-        <Button variant="ghost" color="primary" className="w-full" type="button">
+        <Button variant="solid" color="primary" className="w-full" type="button">
           Save Changes
         </Button>
       </CardFooter>

@@ -45,7 +45,7 @@ export function FinancialPerformanceChart() {
       <CardFooter className="flex items-center justify-between p-4 gap-2">
         <Popover>
           <PopoverTrigger>
-            <Button color="primary" startContent={<CalendarIcon className="h-4 w-4" />} variant="flat">
+            <Button color="primary" startContent={<CalendarIcon className="h-4 w-4" />} variant="solid">
               {dateFormatter}
             </Button>
           </PopoverTrigger>
@@ -54,7 +54,7 @@ export function FinancialPerformanceChart() {
           </PopoverContent>
         </Popover>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <TrendingUpIcon className="h-4 w-4 fill-primary" />
+          <TrendingUpIcon className="h-4 w-4 fill-foreground" />
           <span>+12% YoY</span>
         </div>
       </CardFooter>
