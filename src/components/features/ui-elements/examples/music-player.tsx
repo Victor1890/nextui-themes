@@ -51,19 +51,19 @@ export function MusicPlayer() {
 
             <div className="flex w-full items-center justify-center">
               <Button isIconOnly className="data-[hover]:bg-foreground/10" radius="full" variant="light">
-                <Repeat2 className="text-primary/80" />
+                <Repeat2 className="text-foreground/80" />
               </Button>
-              <Button isIconOnly className="text-primary data-[hover]:bg-primary/10" radius="full" variant="light">
+              <Button isIconOnly className="text-foreground data-[hover]:bg-foreground/10" radius="full" variant="light">
                 <ChevronFirst />
               </Button>
-              <Button isIconOnly className="text-primary w-auto h-auto data-[hover]:bg-primary/10" radius="full" variant="light">
+              <Button isIconOnly className="text-foreground w-auto h-auto data-[hover]:bg-foreground/10" radius="full" variant="light">
                 <Pause size={30} />
               </Button>
-              <Button isIconOnly className="text-primary data-[hover]:bg-primary/10" radius="full" variant="light">
+              <Button isIconOnly className="text-foreground data-[hover]:bg-foreground/10" radius="full" variant="light">
                 <ChevronLast />
               </Button>
-              <Button isIconOnly className="text-primary data-[hover]:bg-primary/10" radius="full" variant="light">
-                <Shuffle className="text-primary/80" />
+              <Button isIconOnly className="text-foreground data-[hover]:bg-foreground/10" radius="full" variant="light">
+                <Shuffle className="text-foreground/80" />
               </Button>
             </div>
           </div>
