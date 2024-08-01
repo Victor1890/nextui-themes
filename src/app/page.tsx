@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { HomeColors } from "@/components/features/home";
 import { Preview } from "@/components/features/preview";
