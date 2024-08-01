@@ -1,6 +1,7 @@
-import { PopoverChangeColor } from "@/components/ui/popover-change-color";
+import { PopoverChangeColor } from "@/components/features/home/components/popover-change-color";
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@nextui-org/react";
+import { CopyCodeBtn } from "./components/copy-code-btn";
 
 export function HomeColors() {
   return (
@@ -32,7 +33,7 @@ export function HomeColors() {
           <Button size="lg" radius="full" className="min-w-4 bg-green-600" />
         </div> */}
         <PopoverChangeColor />
-        <Button variant="ghost">Copy code</Button>
+        <CopyCodeBtn />
       </div>
     </section>
   );
