@@ -10,7 +10,7 @@ export function ModeSectionPopover() {
   const { theme: mode, setTheme: setMode } = useTheme();
   useThemeStore.setState({ mode: mode === "dark" ? "dark" : "light" });
 
-  const themes = useMemo(() => ["light", "dark"], []);
+  const themes = useMemo(() => ["light", "dark", "slate-theme-light-theme", "slate-theme-dark-theme"], []);
 
   return (
     <div className="space-y-1.5">

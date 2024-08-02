@@ -1,6 +1,27 @@
-import { IThemeType } from "@/constants";
+import { ThemeColors } from "@nextui-org/react";
 
-export const THEME_TEMPLATE_OUTPUT = (theme: IThemeType) => `
+interface ITHEME_TEMPLATE_OUTPUT {
+  name: string
+  schemas: Record<"light" | 'dark', ThemeColors>
+}
+
+export const THEME_TEMPLATE_OUTPUT = ({ name, schemas }: ITHEME_TEMPLATE_OUTPUT) => {
+
+  const theme = Object.entries(schemas).reduce((acc: any, [schema, colors]) => {
+
+    const label = `${name}-${schema}-theme`;
+  
+    if(!acc[label]) acc[label] = {};
+
+    acc[label] = {
+      extend: schema,
+      colors
+    }
+
+    return acc
+  }, {})
+
+  return `
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
@@ -13,30 +34,10 @@ const config: Config = {
   ],
   plugins: [
     nextui({
-      themes: {
-        light: {
-          colors: ${JSON.stringify(theme.schemas.light, null, 2)
-            .split("\n")
-            .map((line, index, arr) => {
-              if (index === 0) return line;
-              if (index === arr.length - 1) return "            " + line;
-              return "              " + line;
-            })
-            .join("\n")},
-        },
-        dark: {
-          colors:  ${JSON.stringify(theme.schemas.dark, null, 2)
-            .split("\n")
-            .map((line, index, arr) => {
-              if (index === 0) return line;
-              if (index === arr.length - 1) return "            " + line;
-              return "              " + line;
-            })
-            .join("\n")},
-        }
-      }
+      themes: ${JSON.stringify(theme, null, 2)}
     }),
   ],
 };
 export default config;
-    `;
+    `
+};

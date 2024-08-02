@@ -15,7 +15,7 @@ export default function RootLayout({
           themeProps={{
             attribute: "class",
             defaultTheme: "dark",
-            themes: ["light", "dark", "blue-theme"],
+            themes: ["light", "dark", "slate-theme-light-theme", "slate-theme-dark-theme"],
             enableSystem: true,
             enableColorScheme: true,
           }}

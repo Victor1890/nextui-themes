@@ -1,3 +1,6 @@
+import { IThemeType } from "@/constants";
+import { ThemeColors } from "@nextui-org/react";
+
 interface ColorObject {
   [key: string]: string | ColorObject | undefined;
 }
@@ -26,6 +29,34 @@ export function generateCssVariables(colorObject: ColorObject, baseVariable = "-
   });
 
   return cssVariables;
+}
+
+export function mapSchemaToThemeColors(schemas: IThemeType['schemas']): Record<"dark" | "light", ThemeColors> {
+  const payload: Record<string, any> = {};
+
+  Object.entries(schemas).forEach(([themeType, colors]) => {
+    const themeColors: Partial<any> = {};
+
+    Object.entries(colors).forEach(([colorKey, colorValue]) => {
+      const [primaryColor, modifier] = colorKey.split("-")
+
+      if (primaryColor) {
+        if (!themeColors[primaryColor]) {
+          themeColors[primaryColor] = {};
+        }
+
+        if (modifier === "foreground") {
+          themeColors[primaryColor] = { ...themeColors[primaryColor], foreground: colorValue };
+        } else {
+          themeColors[primaryColor] = { ...themeColors[primaryColor], DEFAULT: colorValue };
+        }
+      }
+    });
+
+    payload[themeType] = themeColors
+  });
+
+  return payload;
 }
 
 function hexToHSL(hex: string): string {

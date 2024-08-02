@@ -7,6 +7,7 @@ import { Check, Copy } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Fragment, useMemo } from "react";
 import { useCopyToClipboard } from "./hooks/useCopyToClipboard";
+import { mapSchemaToThemeColors } from "@/utils/color.util";
 
 const SnippetCode = dynamic(() => import("./snippet-code"), { ssr: false, loading: () => <p>Loading...</p> });
 
@@ -19,8 +20,8 @@ export function CopyCodeBtn() {
     const activeTheme = THEME.find((t) => t.name === theme.name);
     if (!activeTheme) return "";
 
-    // TODO: Fix this
-    return THEME_TEMPLATE_OUTPUT(activeTheme);
+    const schemas = mapSchemaToThemeColors(activeTheme.schemas)
+    return THEME_TEMPLATE_OUTPUT({ name: activeTheme.name, schemas });
   }, [theme]);
 
   return (
