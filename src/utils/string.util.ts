@@ -22,10 +22,10 @@ export const THEME_TEMPLATE_OUTPUT = ({ name, schemas }: ITHEME_TEMPLATE_OUTPUT)
   }, {})
 
   return `
-import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+const config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",

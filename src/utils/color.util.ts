@@ -31,30 +31,50 @@ export function generateCssVariables(colorObject: ColorObject, baseVariable = "-
   return cssVariables;
 }
 
-export function mapSchemaToThemeColors(schemas: IThemeType['schemas']): Record<"dark" | "light", ThemeColors> {
-  const payload: Record<string, any> = {};
+export function mapSchemaToThemeColors(schemas: IThemeType['schemas']) {
+  const payload: Record<string, Record<string, any>> = {};
 
-  Object.entries(schemas).forEach(([themeType, colors]) => {
-    const themeColors: Partial<any> = {};
+  for (const [key, value] of Object.entries(schemas) ) {
+    const themeColors: any = {};
 
-    Object.entries(colors).forEach(([colorKey, colorValue]) => {
-      const [primaryColor, modifier] = colorKey.split("-")
+    for (const color of Object.keys(value)) {
+      const [primaryColor, foregroundColor] = color.split("-");
 
-      if (primaryColor) {
-        if (!themeColors[primaryColor]) {
-          themeColors[primaryColor] = {};
-        }
+      const valuePrimaryColor: string = value[primaryColor];
+      
 
-        if (modifier === "foreground") {
-          themeColors[primaryColor] = { ...themeColors[primaryColor], foreground: colorValue };
-        } else {
-          themeColors[primaryColor] = { ...themeColors[primaryColor], DEFAULT: colorValue };
-        }
+      const [h, s, l] = valuePrimaryColor.split(/[$\s%]/g).filter(x => !!x).map(x => Number(x));
+      const valueHexPrimaryColor = hslToHex(h, s, l);
+
+      if (!themeColors[primaryColor]) {
+        themeColors[primaryColor] = valueHexPrimaryColor;
       }
-    });
 
-    payload[themeType] = themeColors
-  });
+      if (foregroundColor) {
+
+        const valueForegroundColor: string = value?.[color];
+        const [h, s, l] = valueForegroundColor.split(/[$\s%]/g).filter(x => !!x).map(x => Number(x));
+        const valueHexForegroundColor = hslToHex(h, s, l);
+
+         themeColors[primaryColor] = {
+          50: valueHexPrimaryColor,
+          100: valueHexPrimaryColor,
+          200: valueHexPrimaryColor,
+          300: valueHexPrimaryColor,
+          400: valueHexPrimaryColor,
+          500: valueHexPrimaryColor,
+          600: valueHexPrimaryColor,
+          700: valueHexPrimaryColor,
+          800: valueHexPrimaryColor,
+          900: valueHexPrimaryColor,
+          DEFAULT: valueHexPrimaryColor,
+          foreground: valueHexForegroundColor
+        };
+      }
+    }
+
+    payload[key] = themeColors;
+  }
 
   return payload;
 }
@@ -116,4 +136,43 @@ function validColorType(color: string): ColorType {
   } else {
     return "unknown";
   }
+}
+
+function hslToHex(h: number, s: number, l: number): string {
+  // Convert the saturation and lightness percentages to decimals
+  s /= 100;
+  l /= 100;
+
+  // Helper function to convert a hue to RGB
+  const hueToRgb = (p: number, q: number, t: number): number => {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+  };
+
+  let r: number, g: number, b: number;
+
+  if (s === 0) {
+    // Achromatic case (no saturation)
+    r = g = b = l; // Grayscale
+  } else {
+    // Chromatic case
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+
+    r = hueToRgb(p, q, h / 360 + 1/3);
+    g = hueToRgb(p, q, h / 360);
+    b = hueToRgb(p, q, h / 360 - 1/3);
+  }
+
+  // Convert RGB to hexadecimal
+  const toHex = (x: number): string => {
+    const hex = Math.round(x * 255).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  };
+
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
