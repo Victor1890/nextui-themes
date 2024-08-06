@@ -1,5 +1,5 @@
 import { IThemeType } from "@/constants";
-import { ThemeColors } from "@nextui-org/react";
+import { ThemeColors, ColorScale } from "@nextui-org/react";
 
 interface ColorObject {
   [key: string]: string | ColorObject | undefined;
@@ -31,17 +31,19 @@ export function generateCssVariables(colorObject: ColorObject, baseVariable = "-
   return cssVariables;
 }
 
-export function mapSchemaToThemeColors(schemas: IThemeType['schemas']) {
-  const payload: Record<string, Record<string, any>> = {};
+export function mapSchemaToThemeColors(schemas: IThemeType['schemas']): Record<"light" | "dark", Partial<ThemeColors>> {
+  const payload: Record<"light" | "dark", Partial<ThemeColors>> = {
+    light: {},
+    dark: {},
+  };
 
-  for (const [key, value] of Object.entries(schemas) ) {
+  for (const [key, value] of Object.entries(schemas) as [string, Record<string, string>][]) {
     const themeColors: any = {};
 
     for (const color of Object.keys(value)) {
-      const [primaryColor, foregroundColor] = color.split("-");
+      const [primaryColor, foregroundColor] = color.split("-") as [string, string | undefined];
 
       const valuePrimaryColor: string = value[primaryColor];
-      
 
       const [h, s, l] = valuePrimaryColor.split(/[$\s%]/g).filter(x => !!x).map(x => Number(x));
       const valueHexPrimaryColor = hslToHex(h, s, l);
@@ -51,29 +53,19 @@ export function mapSchemaToThemeColors(schemas: IThemeType['schemas']) {
       }
 
       if (foregroundColor) {
-
         const valueForegroundColor: string = value?.[color];
         const [h, s, l] = valueForegroundColor.split(/[$\s%]/g).filter(x => !!x).map(x => Number(x));
         const valueHexForegroundColor = hslToHex(h, s, l);
 
-         themeColors[primaryColor] = {
-          50: valueHexPrimaryColor,
-          100: valueHexPrimaryColor,
-          200: valueHexPrimaryColor,
-          300: valueHexPrimaryColor,
-          400: valueHexPrimaryColor,
+        themeColors[primaryColor] = {
           500: valueHexPrimaryColor,
-          600: valueHexPrimaryColor,
-          700: valueHexPrimaryColor,
-          800: valueHexPrimaryColor,
-          900: valueHexPrimaryColor,
           DEFAULT: valueHexPrimaryColor,
-          foreground: valueHexForegroundColor
+          foreground: valueHexForegroundColor,
         };
       }
     }
 
-    payload[key] = themeColors;
+    payload[key as "light" | "dark"] = themeColors;
   }
 
   return payload;
