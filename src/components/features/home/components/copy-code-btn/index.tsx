@@ -21,7 +21,7 @@ export function CopyCodeBtn() {
     if (!activeTheme) return "";
 
     const schemas = mapSchemaToThemeColors(activeTheme.schemas)
-    return THEME_TEMPLATE_OUTPUT({ name: activeTheme.name, schemas });
+    return THEME_TEMPLATE_OUTPUT({ schemas });
   }, [theme]);
 
   return (
